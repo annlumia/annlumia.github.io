@@ -1,3 +1,49 @@
-<audio controls autoplay="autoplay">
-  <source src="http://78.129.187.73:6946/stream" type="audio/mp3">Your browser does not support the audio element.
-</audio>
+<html>
+  <head>
+    <!-- BEGIN RADIO CONFIGURATION -->
+    <link href='https://annlumia.github.io/blogs/jPlayer-2.9.2/dist/skin/blue.monday/css/jplayer.blue.monday.min.css' rel='stylesheet' type='text/css'/>
+    <script src='https://annlumia.github.io/blogs/jPlayer-2.9.2/lib/jquery.min.js' type='text/javascript'/>
+    <script src='https://annlumia.github.io/blogs/jPlayer-2.9.2/dist/jplayer/jquery.jplayer.min.js' type='text/javascript'/>
+    <script src='https://annlumia.github.io/blogs/wolulasan/radio/stream_src.js'/>
+
+
+  <script type='text/javascript'>
+    console.log(streaming_url);
+    $(document).ready(function(){
+
+    $("#jplayer").jPlayer({
+      ready: function (event) {
+        $(this).jPlayer("setMedia", {
+          title: "Forum Diskusi Wolulasan",
+          mp3: streaming_url
+        }).jPlayer("play");;
+      },
+      error: function (event) {
+            console.log(event.jPlayer.error);
+            console.log(event.jPlayer.error.type);
+            
+        },
+      swfPath: "../../dist/jplayer",
+      supplied: "mp3",
+      wmode: "window",
+      useStateClassSkin: true,
+      autoBlur: false,
+      smoothPlayBar: true,
+      keyEnabled: true,
+      remainingDuration: true,
+      toggleDuration: false,
+      volume: 1.0
+    });
+  });
+  </script>
+
+  <!-- END RADIO CONFIGURATION -->
+
+  </head>
+
+  <body>
+    <div id='jplayer'></div>
+  </body>
+  
+</html>
+
